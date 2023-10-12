@@ -73,7 +73,6 @@ public class ProductServiceImpl implements ProductService {
         }
         return "Deleted";
     }
-
     @Override
     public List<Product> allProduct() {
         List <Product> product = new ArrayList<>();

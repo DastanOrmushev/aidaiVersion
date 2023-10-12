@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StoreServiceImpl implements StoreService {
-    DbHelper dbHelper=new DbHelperImpl();
+    DbHelper dbHelper = new DbHelperImpl();
 
     @Override
     public String saveStore(String nameStore) {
@@ -47,12 +47,10 @@ public class StoreServiceImpl implements StoreService {
 
     @Override
     public List<Store> findAll() {
-        List<Store> store=new ArrayList<>();
+        List<Store> store = new ArrayList<>();
         PreparedStatement ps= dbHelper.getStatement("select * from tb_store ");
         try {
-
             ResultSet resultSet=ps.executeQuery();
-
             while (resultSet.next()){
                 Store result=new Store();
                 result.setId((long) resultSet.getInt(1));
@@ -60,13 +58,10 @@ public class StoreServiceImpl implements StoreService {
                 store.add(result);
             }
             return store;
-
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
     }
-
     @Override
     public Store update(Long id, String name) {
         PreparedStatement preparedStatement=dbHelper.getStatement("update tb_store set name=? where id=? ");
@@ -80,7 +75,6 @@ public class StoreServiceImpl implements StoreService {
             e.printStackTrace();
             throw new RuntimeException("Произошла ошибка при Обновлении магазина");
         }
-
         return findById(id);
     }
 }

@@ -3,10 +3,8 @@ package models;
 public class Employee {
     private Long id;
     private String name;
-
     private Store store;
     private int age;
-
     public Employee() {
     }
 

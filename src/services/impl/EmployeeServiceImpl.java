@@ -11,7 +11,7 @@ import java.sql.SQLException;
 
 public class EmployeeServiceImpl implements EmployeeService {
     DbHelper dbHelper = new DbHelperImpl();
-    StoreService storeService=new StoreServiceImpl();
+    StoreService storeService = new StoreServiceImpl();
     @Override
     public String addEmployee(String name, int storeId, int age) {
         PreparedStatement preparedStatement = null;
@@ -34,7 +34,6 @@ public class EmployeeServiceImpl implements EmployeeService {
         }
 
     }
-
     @Override
     public Employee findById(Long id) {
         try (PreparedStatement preparedStatement = dbHelper.getStatement
@@ -49,10 +48,8 @@ public class EmployeeServiceImpl implements EmployeeService {
                 employee.setStore(storeService.findById(resultSet.getLong("store_id")));
             }
             return employee;
-
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
     }
 }

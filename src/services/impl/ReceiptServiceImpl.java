@@ -26,11 +26,9 @@ public class ReceiptServiceImpl implements ReceiptService {
             LocalDate localDate = LocalDate.now();
             preparedStatement.setDate
                     (3, new Date(localDate.getYear(),localDate.getMonthValue(), localDate.getDayOfMonth()));
-
             return findLast();
         } catch (SQLException e){
             throw new RuntimeException("Ошибка при сохранение чека "+e.getMessage());
-
         }
     }
     @Override
@@ -52,7 +50,6 @@ public class ReceiptServiceImpl implements ReceiptService {
 
         } catch (SQLException e){
             throw  new RuntimeException(e);
-
         }
     }
     @Override
@@ -71,11 +68,8 @@ public class ReceiptServiceImpl implements ReceiptService {
                 receipt.setAddDate(resultSet.getDate("date"));
             }
             return receipt;
-
-
         } catch (SQLException e){
             throw  new RuntimeException(e);
-
         }
     }
 }
